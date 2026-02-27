@@ -1,10 +1,9 @@
 // ============================================
 // IMPORTS
 // ============================================
-
+//this is the sever of the cloned ghassen's project alo alo
 
 // Serveur Express principal - Application de gestion des étudiants
-const express = require('express');
 const express = require('express');
 const dotenv = require('dotenv');
 const connectDB = require('./config/database');
@@ -80,4 +79,13 @@ app.listen(PORT, () => {
     ║   📚 API: http://localhost:${PORT}/api/etudiants║
     ╚════════════════════════════════════════════╝
     `);
+});
+
+// Health check endpoint
+app.get('/health', (req, res) => {
+    res.status(200).json({
+        status: 'OK',
+        timestamp: new Date().toISOString(),
+        uptime: process.uptime()
+    });
 });
